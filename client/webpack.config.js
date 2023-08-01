@@ -23,6 +23,7 @@ module.exports = () => {
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+      // Configure manifest file in plugin settings
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -46,13 +47,14 @@ module.exports = () => {
     module: {
       rules: [
         {
+          // Handle CSS
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          // We use babel-loader in order to use ES6.
+          // Babel allows usage of ES6 functionality like async / await
           use: {
             loader: 'babel-loader',
             options: {
